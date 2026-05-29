@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api";
+import API from "../Api";
 import Navbar from "../components/Navbar";
 import RecipeCard from "../components/RecipeCard";
 import SearchBar from "../components/SearchBar";
