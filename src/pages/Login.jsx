@@ -1,4 +1,4 @@
-import API from '../api';
+import API from "../Api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
