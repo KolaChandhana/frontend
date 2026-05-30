@@ -5,20 +5,21 @@ import "./RecipeCard.css";
 const RecipeCard = ({ recipe, onDelete }) => {
     const navigate = useNavigate();
     const handleDelete = async () => {
-        const confirmDelete = window.confirm("Are you sure you want to delete?");
-        if (!confirmDelete) return;
-        try {
-            const token = localStorage.getItem("token");
-            API.delete(`/recipes/${recipe._id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            onDelete(recipe._id);
-        } catch (error) {
-            console.log("Delete failed:", error.response?.data || error.message);
-        }
-    };
+    const confirmDelete = window.confirm( "Are you sure you want to delete?");
+    if (!confirmDelete) return;
+    try {
+        const token = localStorage.getItem("token");
+        await API.delete(`/recipes/${recipe._id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        onDelete(recipe._id);
+        alert("Recipe deleted successfully");
+    } catch (error) {
+        console.log( "Delete failed:", error.response?.data || error.message);
+    }
+};
     return (
         <div className="card">
             <img src={recipe.imageURI} alt={recipe.title} />
