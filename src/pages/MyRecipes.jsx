@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api";
+import API from "../Api";
 import "./MyRecipes.css";
 const MyRecipes = () => {
     const navigate = useNavigate();
