@@ -4,6 +4,7 @@ import API from "../Api";
 import "./RecipeCard.css";
 const RecipeCard = ({ recipe, onDelete }) => {
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
     console.log(recipe);
     const handleDelete = async () => {
     const confirmDelete = window.confirm( "Are you sure you want to delete?");
@@ -37,9 +38,11 @@ const RecipeCard = ({ recipe, onDelete }) => {
                 <button onClick={() => navigate(`/recipe/edit/${recipe._id}`)}>
                     Edit
                 </button>
-                <button className="delete" onClick={handleDelete}>
-                    Delete
-                </button>
+                {recipe.createdBy?._id === user?.id && (
+                    <button className="delete" onClick={handleDelete}>
+                        Delete
+                    </button>
+                )}
             </div>
         </div>
     );
