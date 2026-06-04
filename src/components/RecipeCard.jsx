@@ -23,7 +23,7 @@ const RecipeCard = ({ recipe, onDelete }) => {
 };
     return (
         <div className="card">
-            <img src={`https://recipi-backend-z2f8.onrender.com${recipe.imageURI}`} alt={recipe.title}/>
+            <img src={recipe.imageURI} alt={recipe.title} />
             <span className="badge">{recipe.category}</span>
             <h3>{recipe.title}</h3>
             <p className="meta">
