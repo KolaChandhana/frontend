@@ -40,7 +40,7 @@ const MyRecipes = () => {
                 }
             );
             alert("Recipe added successfully!");
-            navigate("/Home");
+            navigate("/home");
         } catch (err) {
             console.log(err);
             alert("Failed to add recipe");
