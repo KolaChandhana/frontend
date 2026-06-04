@@ -30,26 +30,36 @@ const Home = () => {
         }
     };
     const handleSearch = (text) => {
-      if (!text) {
-          setFiltered(recipes);
-          return;
-      }
-      const filteredData = recipes.filter((r) =>
-          r.title.toLowerCase().includes(text.toLowerCase())
-      );
-      setFiltered(filteredData);
-  };
+        if (!text) {
+            setFiltered(recipes);
+            return;
+        }
+        const filteredData = recipes.filter((r) =>
+            r.title.toLowerCase().includes(text.toLowerCase())
+        );
+        setFiltered(filteredData);
+    };
     const filterByCategory = (cat) => {
-      if (cat === "All") {
-          setFiltered(recipes);
-          return;
-      }
-      setFiltered(recipes.filter((r) => r.category === cat));
-  };
-  const handleDelete = (id) => {
-        const updated = recipes.filter((r) => r._id !== id);
-        setRecipes(updated);
-        setFiltered(updated);
+        if (cat === "All") {
+            setFiltered(recipes);
+            return;
+        }
+        setFiltered(recipes.filter((r) => r.category === cat));
+    };
+    const handleDelete = async (id) => {
+        try {
+            const token = localStorage.getItem("token");
+            await API.delete(`/recipes/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const updated = recipes.filter((r) => r._id !== id);
+            setRecipes(updated);
+            setFiltered(updated);
+        } catch (error) {
+            console.log("Delete error:", error.message);
+        }
     };
     return (
         <div>
