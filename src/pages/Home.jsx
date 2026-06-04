@@ -49,16 +49,21 @@ const Home = () => {
     const handleDelete = async (id) => {
         try {
             const token = localStorage.getItem("token");
+
+            console.log("TOKEN:", token); // check if token exists
+
             await API.delete(`/recipes/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
+
             const updated = recipes.filter((r) => r._id !== id);
             setRecipes(updated);
             setFiltered(updated);
+
         } catch (error) {
-            console.log("Delete error:", error.message);
+            console.log("Delete failed:", error.response?.data || error.message);
         }
     };
     return (
