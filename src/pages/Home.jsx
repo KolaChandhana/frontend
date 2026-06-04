@@ -20,6 +20,9 @@ const Home = () => {
     const fetchRecipes = async () => {
         try {
             const res = await API.get("/recipes/public");
+
+            console.log("RECIPES DATA:", res.data);
+
             setRecipes(res.data || []);
             setFiltered(res.data || []);
         } catch (error) {
