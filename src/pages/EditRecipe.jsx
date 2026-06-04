@@ -25,7 +25,7 @@ const EditRecipe = () => {
     const handleUpdate = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await API.get(`/recipes/${id}`, {
+            const res = await API.put(`/recipes/${id}`, recipe, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
