@@ -4,6 +4,7 @@ import API from "../Api";
 import "./RecipeCard.css";
 const RecipeCard = ({ recipe, onDelete }) => {
     const navigate = useNavigate();
+    console.log(recipe);
     const handleDelete = async () => {
     const confirmDelete = window.confirm( "Are you sure you want to delete?");
     if (!confirmDelete) return;
